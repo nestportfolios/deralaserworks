@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dera Laser Works | 3D Sign Boards & Architectural Cladding</title>
+  <meta name="description"
+    content="Dera Laser Works specializes in custom 3D illuminated signboards, exterior ACP cladding, and precision CNC laser cutting. Based in Dera Ismail Khan, serving commercial clients across Pakistan.">
+  <meta name="keywords"
+    content="3D Sign Boards, ACP Cladding, Laser Cutting, Dera Ismail Khan, Channel Letters, Commercial Signage, Facade Cladding">
+  <meta name="author" content="Dera Laser Works">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dera Laser Works | 3D Sign Boards & ACP Cladding">
+  <meta property="og:description"
+    content="Custom 3D illuminated channel letters, exterior ACP cladding, and precision laser cutting for commercial businesses.">
+  <meta property="og:image" content="assets/projects/centro/centro.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B0C10'/><path d='M25 75 L50 25 L75 75 Z' stroke='%23FF3D00' stroke-width='8' fill='none'/><circle cx='50' cy='45' r='8' fill='%23FFB800'/></svg>">
+
+  <!-- Google Fonts: Lora + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-obsidian text-light antialiased">
+
+  <!-- ========================================================================= -->
+  <!-- 0. SERVICES-BASED PRELOADER SCREEN -->
+  <!-- ========================================================================= -->
+  <div id="preloader" class="preloader" aria-hidden="false">
+    <div class="preloader-content">
+      <!-- Simulated Laser Cutting Beam & Head -->
+      <div class="laser-cutter-box">
+        <div class="laser-head">
+          <span class="laser-beam"></span>
+          <span class="laser-spark"></span>
+        </div>
+        <div class="preloader-logo-wrap">
+          <div class="logo-mark preloader-mark">
+            <i class="fa-solid fa-shapes text-accent-laser"></i>
+            <span class="preloader-badge">DLW</span>
+          </div>
+          <span class="preloader-title">DERA LASER WORKS</span>
+        </div>
+      </div>
+
+      <!-- Service Ticker (Cycles through 3D Signs, Cladding, Laser Cutting) -->
+      <div class="preloader-service-ticker">
+        <span class="ticker-label">Specializing in:</span>
+        <span id="preloader-service-text" class="service-pill">3D Illuminated Sign Boards</span>
+      </div>
+
+      <!-- Loading Progress Bar & Percentage -->
+      <div class="preloader-progress-wrap">
+        <div id="preloader-progress-bar" class="preloader-progress-bar"></div>
+      </div>
+      <div class="preloader-meta">
+        <span class="preloader-status">Precision Engineering in Progress...</span>
+        <span class="preloader-percent"><span id="preloader-count">0</span>%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 0.1 INTERACTIVE LASER CURSOR CANVAS (Draws glowing laser beam on cursor move) -->
+  <!-- ========================================================================= -->
+  <canvas id="laser-cursor-canvas" class="laser-cursor-canvas" aria-hidden="true"></canvas>
+
+  <!-- ========================================================================= -->
+  <!-- 0.2 SERVICES-THEMED 3D NEON BACKGROUND ANIMATIONS (3D Signs, Cladding & Laser Grid) -->
+  <!-- ========================================================================= -->
+  <div class="services-neon-ambient-bg" aria-hidden="true">
+    <!-- Architectural Grid & Laser Scanning Sweeper -->
+    <div class="neon-grid-mesh"></div>
+    <div class="laser-scan-sweeper"></div>
+
+    <!-- Floating 3D Neon Sign Board 1 (3D Illuminated Channel Signboard) -->
+    <div class="floating-neon-board board-3d-sign">
+      <div class="neon-board-frame">
+        <div class="neon-letter-group">
+          <span class="neon-letter">3</span>
+          <span class="neon-letter">D</span>
+          <span class="neon-badge-pill">SIGNS</span>
+        </div>
+        <div class="neon-tube-edge"></div>
+      </div>
+    </div>
+
+    <!-- Floating 3D Neon Sign Board 2 (Architectural ACP Facade Panel) -->
+    <div class="floating-neon-board board-acp-cladding">
+      <div class="neon-board-frame cladding-frame">
+        <div class="cladding-grid-lines">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="neon-tag"><i class="fa-solid fa-layer-group"></i> ACP CLADDING</div>
+      </div>
+    </div>
+
+    <!-- Floating 3D Neon Sign Board 3 (CNC Precision Laser Cutting Node) -->
+    <div class="floating-neon-board board-laser-cut">
+      <div class="neon-board-frame laser-frame">
+        <span class="neon-laser-target"></span>
+        <div class="neon-tag"><i class="fa-solid fa-bolt"></i> CNC LASER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. STREAMLINED HEADER / NAVIGATION WITH LIGHT/DARK SWITCHER -->
+  <!-- ========================================================================= -->
+  <header id="global-header" class="site-header">
+    <div class="header-container">
+      <!-- Streamlined Brand Logo (Clean DLW Icon) -->
+      <a href="#hero" class="brand-logo" aria-label="Dera Laser Works Home">
+        <div class="logo-mark">
+          <span class="laser-beam-pulse"></span>
+          <i class="fa-solid fa-shapes text-accent-laser"></i>
+          <span class="logo-dlw-badge">DLW</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li class="nav-item has-dropdown">
+            <a href="#services" class="nav-link">
+              Services <i class="fa-solid fa-angle-down text-xs ml-1"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#services" class="dropdown-link">
+                <i class="fa-solid fa-lightbulb text-accent-gold"></i>
+                <div>
+                  <strong>3D Illuminated Signs</strong>
+                  <span>Acrylic front-lit & backlit channel letters</span>
+                </div>
+              </a>
+              <a href="#services" class="dropdown-link">
+                <i class="fa-solid fa-layer-group text-accent-laser"></i>
+                <div>
+                  <strong>Architectural ACP Cladding</strong>
+                  <span>Weatherproof aluminum composite facade work</span>
+                </div>
+              </a>
+              <a href="#services" class="dropdown-link">
+                <i class="fa-solid fa-bolt text-blue-400"></i>
+                <div>
+                  <strong>CNC & Laser Cutting</strong>
+                  <span>Precision metal slicing & custom jali screens</span>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="#workflow-explainer" class="nav-link">Workflow Explainer</a></li>
+          <li class="nav-item"><a href="#featured-projects" class="nav-link">Featured Projects</a></li>
+          <li class="nav-item"><a href="#more-projects" class="nav-link">Project Gallery</a></li>
+          <li class="nav-item"><a href="#process" class="nav-link">Our Process</a></li>
+          <li class="nav-item"><a href="#calculator" class="nav-link">Get a Quote</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Clean Header Actions: Light / Dark Mode Toggle + Mobile Menu -->
+      <div class="header-actions">
+        <!-- Light / Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Switch between Light and Dark Theme"
+          title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-sun light-icon"></i>
+          <i class="fa-solid fa-moon dark-icon"></i>
+        </button>
+
+        <!-- Mobile Drawer Toggle -->
+        <button id="mobile-toggle" class="mobile-toggle-btn" aria-label="Toggle Navigation Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <div class="drawer-header">
+      <div class="logo-mark">
+        <i class="fa-solid fa-shapes text-accent-laser"></i>
+        <span class="logo-dlw-badge ml-1">DLW</span>
+      </div>
+      <button id="drawer-close" class="drawer-close-btn" aria-label="Close Navigation"><i
+          class="fa-solid fa-xmark"></i></button>
+    </div>
+    <ul class="drawer-nav">
+      <li><a href="#services" class="drawer-link">Services</a></li>
+      <li><a href="#workflow-explainer" class="drawer-link">Workflow Explainer</a></li>
+      <li><a href="#featured-projects" class="drawer-link">Featured Projects</a></li>
+      <li><a href="#more-projects" class="drawer-link">Project Gallery</a></li>
+      <li><a href="#process" class="drawer-link">How We Work</a></li>
+      <li><a href="#calculator" class="drawer-link">Get a Quote</a></li>
+      <li><a href="#testimonials" class="drawer-link">Client Reviews</a></li>
+      <li><a href="#contact" class="drawer-link">Contact & Workshop</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <div class="drawer-theme-row">
+        <span>Display Mode:</span>
+        <button id="drawer-theme-toggle" class="theme-toggle-btn theme-toggle-drawer" aria-label="Toggle Theme">
+          <i class="fa-solid fa-sun light-icon"></i>
+          <i class="fa-solid fa-moon dark-icon"></i>
+        </button>
+      </div>
+      <a href="tel:+923139355979" class="drawer-hotline mt-3"><i class="fa-solid fa-phone"></i> +92 313 9355979</a>
+      <a href="https://wa.me/923139355979" class="btn-whatsapp-full mt-3 text-center">Chat on WhatsApp</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ========================================================================= -->
+    <!-- 2. HERO SECTION -->
+    <!-- ========================================================================= -->
+    <section id="hero" class="hero-section">
+      <div class="hero-video-wrapper">
+        <video class="hero-bg-video" autoplay muted loop playsinline preload="metadata">
+          <source src="assets/projects/himalayan_pansar/dlw_video (1).mp4" type="video/mp4">
+        </video>
+        <div class="hero-gradient-overlay"></div>
+      </div>
+
+      <div class="hero-container container">
+        <div class="hero-eyebrow">
+          <span class="pulsing-beacon"></span>
+          <span class="badge-text">PROFESSIONAL FABRICATION & CLADDING SERVICES</span>
+        </div>
+
+        <h1 class="hero-headline">
+          Custom <span class="text-gradient-laser">3D Sign Boards</span> & Architectural <span
+            class="text-gradient-gold">Cladding Works</span>.
+        </h1>
+
+        <p class="hero-subheadline">
+          Dera Laser Works designs, fabricates, and installs high-visibility 3D illuminated channel letters, exterior
+          ACP cladding, and precision CNC laser cutting for retail stores, hospitals, plazas, and institutions.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#featured-projects" class="btn-primary-glow">
+            <span>View Recent Projects</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#calculator" class="btn-secondary-glass">
+            <i class="fa-solid fa-calculator text-accent-gold"></i>
+            <span>Calculate Estimate</span>
+          </a>
+          <div class="hero-direct-call">
+            <i class="fa-solid fa-phone text-accent-laser"></i>
+            <span>Call Workshop Direct: <strong>+92 (313) 935-5979</strong></span>
+          </div>
+        </div>
+
+        <!-- 3 LOGICAL METRICS (500+, 50,000+, 5+) -->
+        <div class="hero-metrics-bar hero-metrics-3col">
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="metric-counter" data-target="500">0</span><span class="metric-plus">+</span>
+            </div>
+            <span class="metric-label">Commercial Signs Fabricated</span>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="metric-counter" data-target="50000">0</span><span class="metric-plus">+</span>
+            </div>
+            <span class="metric-label">Sq.Ft Architectural ACP Clad</span>
+          </div>
+          <div class="metric-card">
+            <div class="metric-number-wrapper">
+              <span class="metric-counter" data-target="5">0</span><span class="metric-plus">+</span>
+            </div>
+            <span class="metric-label">Years Engineering Mastery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. CLIENT LOGO / NAME MARQUEE -->
+    <!-- ========================================================================= -->
+    <section class="marquee-section" aria-label="Selected Clients">
+      <div class="marquee-header">
+        <span class="marquee-label">TRUSTED BY COMMERCE, HEALTHCARE & INSTITUTIONAL CLIENTS</span>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <div class="marquee-item"><i class="fa-solid fa-store"></i> CENTRO SHOPPING</div>
+          <div class="marquee-item"><i class="fa-solid fa-hospital"></i> ISLAMABAD HEALTH CLINIC</div>
+          <div class="marquee-item"><i class="fa-solid fa-square-h"></i> EMERGENCY HOSPITAL</div>
+          <div class="marquee-item"><i class="fa-solid fa-pizza-slice"></i> ONE PIZZA & GRILL</div>
+          <div class="marquee-item"><i class="fa-solid fa-dumbbell"></i> GLOBAL GYM</div>
+          <div class="marquee-item"><i class="fa-solid fa-leaf"></i> HIMALAYAN PANSAR</div>
+          <div class="marquee-item"><i class="fa-solid fa-graduation-cap"></i> GOMAL UNIVERSITY</div>
+          <div class="marquee-item"><i class="fa-solid fa-building"></i> CHESSION BRAND</div>
+          <!-- Repeat -->
+          <div class="marquee-item"><i class="fa-solid fa-store"></i> CENTRO SHOPPING</div>
+          <div class="marquee-item"><i class="fa-solid fa-hospital"></i> ISLAMABAD HEALTH CLINIC</div>
+          <div class="marquee-item"><i class="fa-solid fa-square-h"></i> EMERGENCY HOSPITAL</div>
+          <div class="marquee-item"><i class="fa-solid fa-pizza-slice"></i> ONE PIZZA & GRILL</div>
+          <div class="marquee-item"><i class="fa-solid fa-dumbbell"></i> GLOBAL GYM</div>
+          <div class="marquee-item"><i class="fa-solid fa-leaf"></i> HIMALAYAN PANSAR</div>
+          <div class="marquee-item"><i class="fa-solid fa-graduation-cap"></i> GOMAL UNIVERSITY</div>
+          <div class="marquee-item"><i class="fa-solid fa-building"></i> CHESSION BRAND</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. CORE SERVICES -->
+    <!-- ========================================================================= -->
+    <section id="services" class="section-padding bg-obsidian-elevated">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-wrench text-accent-laser mr-2"></i> OUR CORE SERVICES</span>
+        </div>
+        <h2 class="section-title text-center">What We Do Best</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          From full building facade upgrades to precision-cut illuminated shop signs, our in-house team handles design,
+          fabrication, and mounting.
+        </p>
+
+        <div class="services-clean-grid mt-12">
+          <!-- Service 1 -->
+          <div class="service-box">
+            <div class="service-icon-wrap">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <h3 class="service-heading">3D Illuminated Sign Boards</h3>
+            <p class="service-text">
+              Custom 3D channel letters made with high-grade acrylic and stainless steel. Available in front-lit,
+              halo-backlit, and edge-lit designs with weather-sealed LED modules for long-lasting nighttime brightness.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Cast acrylic faces (anti-yellowing)</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Stainless steel & metal returns</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Waterproof Samsung/Osram LEDs</li>
+            </ul>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-box">
+            <div class="service-icon-wrap">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h3 class="service-heading">Architectural ACP Cladding</h3>
+            <p class="service-text">
+              Exterior and interior Aluminum Composite Panel (ACP) cladding for plazas, commercial store fronts, and
+              building elevations. Gives your building a clean, modern look while protecting it from weather.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check text-accent-laser"></i> 4mm PVDF coated panels</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Galvanized iron sub-frame structure</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Silicone expansion weather seals</li>
+            </ul>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-box">
+            <div class="service-icon-wrap">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="service-heading">CNC & Fiber Laser Cutting</h3>
+            <p class="service-text">
+              High-accuracy cutting of stainless steel, mild steel, brass, and acrylic. Ideal for decorative
+              architectural jali screens, boundary partitions, custom emblems, and indoor branding.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Clean, burr-free edges</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Custom geometric & Islamic patterns</li>
+              <li><i class="fa-solid fa-check text-accent-laser"></i> Up to heavy-gauge metal sheets</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4.5. ANIMATED SERVICES EXPLAINER (50-Frame Interactive Showcase) -->
+    <!-- ========================================================================= -->
+    <section id="workflow-explainer" class="section-padding bg-obsidian workflow-explainer-section">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-film text-accent-laser mr-2"></i> 4-STAGE ANIMATED PIPELINE</span>
+        </div>
+        <h2 class="section-title text-center">How We Build Your Storefront</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          An animated breakdown of our 4-stage engineering workflow: from precision fiber laser cutting to 3D acrylic channel fabrication, ACP cladding, and our signature Night Test.
+        </p>
+
+        <div class="explainer-player-container mt-10">
+          <div class="explainer-video-frame">
+            <!-- Animated WebP Loop Display -->
+            <img id="explainer-display-img" src="assets/dlw_services_explainer.webp" alt="Dera Laser Works 4-Stage Fabrication Pipeline Animation" class="explainer-media">
+            
+            <div class="explainer-overlay-controls">
+              <button class="explainer-fullscreen-btn media-trigger" data-type="video" data-src="assets/dlw_services_explainer.mp4" data-caption="Dera Laser Works: 4-Stage Fabrication & Engineering Explainer Reel" title="Watch High-Def MP4 Video">
+                <i class="fa-solid fa-expand"></i> Full HD Video
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Phase Selector Tabs -->
+          <div class="explainer-phase-tabs" id="explainer-tabs">
+            <button class="explainer-phase-btn active" data-phase="auto" data-frame="assets/dlw_services_explainer.webp">
+              <span class="phase-step-indicator"><i class="fa-solid fa-rotate"></i> Auto Loop</span>
+              <strong>Full Pipeline</strong>
+              <span>50-Frame Workflow</span>
+            </button>
+            <button class="explainer-phase-btn" data-phase="1" data-frame="assets/animation_frames/frame_08.webp">
+              <span class="phase-step-indicator">Phase 01</span>
+              <strong>Laser Slicing</strong>
+              <span>CNC Fiber Laser</span>
+            </button>
+            <button class="explainer-phase-btn" data-phase="2" data-frame="assets/animation_frames/frame_20.webp">
+              <span class="phase-step-indicator">Phase 02</span>
+              <strong>3D Lettering</strong>
+              <span>Acrylic & Waterproof LEDs</span>
+            </button>
+            <button class="explainer-phase-btn" data-phase="3" data-frame="assets/animation_frames/frame_32.webp">
+              <span class="phase-step-indicator">Phase 03</span>
+              <strong>ACP Cladding</strong>
+              <span>PVDF Facade Paneling</span>
+            </button>
+            <button class="explainer-phase-btn" data-phase="4" data-frame="assets/animation_frames/frame_48.webp">
+              <span class="phase-step-indicator"><i class="fa-solid fa-moon text-accent-gold"></i> Phase 04</span>
+              <strong>Night Test</strong>
+              <span>100% Luminescence</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 5. FEATURED CLIENT PROJECTS (FROM assets/projects) -->
+    <!-- ========================================================================= -->
+    <section id="featured-projects" class="section-padding bg-obsidian">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-star text-accent-gold mr-2"></i> RECENT WORK</span>
+        </div>
+        <h2 class="section-title text-center">Featured Client Projects</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          Explore actual projects designed, fabricated, and installed by Dera Laser Works. Click on any project or play
+          button to view high-definition photos and video reels.
+        </p>
+
+        <div class="featured-projects-grid mt-12">
+
+          <!-- 1. Centro -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/centro/centro.png" alt="Centro Shopping Facade & Sign"
+                class="featured-img media-trigger" data-type="image" data-src="assets/projects/centro/centro.png"
+                data-caption="Centro: Modern Storefront Facade & 3D Illuminated Channel Letters">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/centro/dlw_video (9).mp4" data-caption="Centro - Daytime Facade Mounting Reel"
+                title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Centro</span>
+                <span class="proj-type">Commercial Storefront</span>
+              </div>
+              <h3 class="featured-heading">Commercial Facade & 3D Sign Board</h3>
+              <p class="featured-description">
+                Complete exterior store elevation with custom 3D illuminated channel letters and sleek paneling for high
+                daytime and nighttime visibility.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn media-trigger" data-type="image" data-src="assets/projects/centro/centro_02.png"
+                  data-caption="Centro: Additional View of Commercial Facade">
+                  <i class="fa-solid fa-image"></i> View Photo 2
+                </button>
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/centro/dlw_video (7).mp4"
+                  data-caption="Centro: Night Illumination & LED Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Islamabad Health Clinic -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/islambad_health_clinic/islambad_health_clinic.png"
+                alt="Islamabad Health Clinic Sign" class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/islambad_health_clinic/islambad_health_clinic.png"
+                data-caption="Islamabad Health Clinic: Illuminated Medical Facade Sign Board">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/islambad_health_clinic/dlw_video (4).mp4"
+                data-caption="Islamabad Health Clinic - Channel Letters Assembly Reel" title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Islamabad Health Clinic</span>
+                <span class="proj-type">Healthcare Facility</span>
+              </div>
+              <h3 class="featured-heading">Medical Clinic 3D Sign Board</h3>
+              <p class="featured-description">
+                Clean medical-grade illuminated 3D lettering designed for high clarity and trustworthy presence on a
+                prominent commercial road.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn media-trigger" data-type="image"
+                  data-src="assets/projects/islambad_health_clinic/islambad_health_clinic_02.png"
+                  data-caption="Islamabad Health Clinic: Frontal View">
+                  <i class="fa-solid fa-image"></i> View Photo 2
+                </button>
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/islambad_health_clinic/dlw_video (5).mp4"
+                  data-caption="Islamabad Health Clinic: Night Illumination Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Emergency Hospital -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/emergency_hospital/emergency_hospital.png" alt="Emergency Hospital 3D Sign"
+                class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/emergency_hospital/emergency_hospital.png"
+                data-caption="Emergency Hospital: 24/7 Illuminated Building Entrance Sign">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/emergency_hospital/dlw_video (2).mp4"
+                data-caption="Emergency Hospital: 24/7 Illuminated Entrance Sign & Illumination Reel"
+                title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Emergency Hospital</span>
+                <span class="proj-type">24/7 Medical Entrance</span>
+              </div>
+              <h3 class="featured-heading">High-Visibility Hospital Signage</h3>
+              <p class="featured-description">
+                High-power LED illuminated signage engineered for continuous 24/7 operation with weather-sealed wiring
+                and immediate recognition.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/emergency_hospital/dlw_video (2).mp4"
+                  data-caption="Emergency Hospital: 24/7 High-Power Illumination & Rigging Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. One Pizza & Grill -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/one_pizza_grill/one_pizza_grill.png" alt="One Pizza & Grill Exterior Sign"
+                class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/one_pizza_grill/one_pizza_grill.png"
+                data-caption="One Pizza & Grill: Vibrant Food Business 3D Illuminated Sign">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/one_pizza_grill/dlw_video (8).mp4"
+                data-caption="One Pizza & Grill: Night Lighting & Illumination Reel" title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">One Pizza & Grill</span>
+                <span class="proj-type">Restaurant & Dining</span>
+              </div>
+              <h3 class="featured-heading">Restaurant 3D Channel Sign Board</h3>
+              <p class="featured-description">
+                Eye-catching vibrant colored channel letters with front-lit glow, designed to draw foot and vehicle
+                traffic from across the street.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/one_pizza_grill/dlw_video (8).mp4"
+                  data-caption="One Pizza & Grill: Night Lighting & Illumination Reel">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Global Gym -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/global_gym/global_gym.png" alt="Global Gym 3D Sign Board"
+                class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/global_gym/global_gym.png"
+                data-caption="Global Gym: Bold Fitness Club Facade & 3D Sign">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/global_gym/dlw_video (3).mp4"
+                data-caption="Global Gym - Rigging & Installation Video Reel" title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Global Gym</span>
+                <span class="proj-type">Fitness & Sports Club</span>
+              </div>
+              <h3 class="featured-heading">Bold Fitness Club Facade</h3>
+              <p class="featured-description">
+                Large-format 3D letters mounted on composite paneling, offering strong contrast against the building
+                exterior.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/global_gym/dlw_video (3).mp4"
+                  data-caption="Global Gym: Evening Facade & 3D Sign Illumination Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Himalayan Pansar -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/himalayan_pansar/himalayan_pansar.png" alt="Himalayan Pansar Sign Board"
+                class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/himalayan_pansar/himalayan_pansar.png"
+                data-caption="Himalayan Pansar: Retail Organic Store 3D Sign">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/himalayan_pansar/dlw_video (1).mp4"
+                data-caption="Himalayan Pansar - Night Illumination Showcase" title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Himalayan Pansar</span>
+                <span class="proj-type">Retail Organic Store</span>
+              </div>
+              <h3 class="featured-heading">Retail Storefront 3D Signage</h3>
+              <p class="featured-description">
+                High-contrast acrylic 3D lettering on ACP backer board, providing clean street presence and durability.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/himalayan_pansar/dlw_video (1).mp4"
+                  data-caption="Himalayan Pansar: Night Illumination Showcase">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Gomal University D.I. Khan -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/gomal_university/dlw_image (10).jpeg" alt="Gomal University Project"
+                class="featured-img media-trigger" data-type="image"
+                data-src="assets/projects/gomal_university/dlw_image (10).jpeg"
+                data-caption="Gomal University D.I. Khan: Campus Project Signage & Cladding">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/gomal_university/dlw_video (10).mp4"
+                data-caption="Gomal University - Metal Finishing & Fabrication Reel" title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Gomal University</span>
+                <span class="proj-type">Institutional Landmark</span>
+              </div>
+              <h3 class="featured-heading">Campus Entrance Fabrication</h3>
+              <p class="featured-description">
+                Heavy-gauge structural framing and stainless steel letters built to withstand outdoor regional weather
+                conditions.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn media-trigger" data-type="video"
+                  data-src="assets/projects/gomal_university/dlw_video (10).mp4"
+                  data-caption="Gomal University: Stainless Steel Fabrication Showcase">
+                  <i class="fa-solid fa-film"></i> Fabrication Reel
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8. Chession -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/chession/chession.png" alt="Chession Brand Sign"
+                class="featured-img media-trigger" data-type="image" data-src="assets/projects/chession/chession.png"
+                data-caption="Chession: Precision Cut 3D Brand Lettering">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/chession/dlw_video (6).mp4" data-caption="Chession - CNC Milling Reel"
+                title="Play Video">
+                <i class="fa-solid fa-play"></i> Watch Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">Chession</span>
+                <span class="proj-type">Brand Identity</span>
+              </div>
+              <h3 class="featured-heading">Precision Brand Sign Board</h3>
+              <p class="featured-description">
+                Laser-cut typography and sleek metallic finishing tailored to brand guidelines.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/chession/dlw_video (6).mp4"
+                  data-caption="Chession: 3D Letter Precision & Lighting Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Letter D (Precision Craftsmanship) -->
+          <div class="featured-card">
+            <div class="featured-media-wrap">
+              <img src="assets/projects/letter_d/letter_d.png" alt="Letter D Acrylic Channel Fabrication"
+                class="featured-img media-trigger" data-type="image" data-src="assets/projects/letter_d/letter_d.png"
+                data-caption="Dera Laser Works: Precision Acrylic Channel Letter Craftsmanship">
+              <button class="video-play-badge media-trigger" data-type="video"
+                data-src="assets/projects/letter_d/dlw_video (11).mp4"
+                data-caption="Dera Laser Works - Full Workshop Tour Reel" title="Play Video">
+                <i class="fa-solid fa-play"></i> Workshop Reel
+              </button>
+            </div>
+            <div class="featured-body">
+              <div class="featured-meta">
+                <span class="client-name">In-House Quality</span>
+                <span class="proj-type">Channel Letter Tech</span>
+              </div>
+              <h3 class="featured-heading">Precision 3D Acrylic Fabrication</h3>
+              <p class="featured-description">
+                Close-up demonstration of our seamless acrylic bonding, clean returns, and uniform internal LED lighting
+                test.
+              </p>
+              <div class="featured-links">
+                <button class="text-btn night-test-btn media-trigger" data-type="video"
+                  data-src="assets/projects/letter_d/dlw_video (11).mp4"
+                  data-caption="Dera Laser Works: Precision Acrylic Channel Letter LED Illumination Test">
+                  <i class="fa-solid fa-moon"></i> Night Test
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 6. MORE PROJECTS ARCHIVE (FROM assets/more_projects) -->
+    <!-- ========================================================================= -->
+    <section id="more-projects" class="section-padding bg-obsidian-elevated">
+      <div class="container">
+        <div class="gallery-header-row">
+          <div>
+            <span class="pill-badge mb-2"><i class="fa-solid fa-images mr-1"></i> ARCHIVE</span>
+            <h2 class="text-2xl font-bold font-serif">More Completed Works</h2>
+            <p class="text-muted text-sm mt-1">Additional commercial storefronts, ACP cladding installations, and
+              laser-cut metal screens.</p>
+          </div>
+          <div class="filter-pills" id="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All (19)</button>
+            <button class="filter-btn" data-filter="signage">3D Signboards</button>
+            <button class="filter-btn" data-filter="cladding">ACP Cladding</button>
+            <button class="filter-btn" data-filter="laser">Laser & Jali</button>
+          </div>
+        </div>
+
+        <div class="project-grid mt-8" id="project-grid">
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (1).jpeg" alt="A1 Moiz Mart" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (1).jpeg"
+                data-caption="A1 Moiz Mart: Illuminated 3D LED Acrylic Channel Letters">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">3D Sign Board</span>
+              <h4 class="p-title">A1 Moiz Mart</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (2).jpeg" alt="RD Acrylic Sign" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (2).jpeg"
+                data-caption="RD: Precision 3D Acrylic Lettering on Red Backplate">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Corporate Sign</span>
+              <h4 class="p-title">RD Dual Acrylic</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (3).jpeg" alt="Building Cladding Rigging" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (3).jpeg"
+                data-caption="Commercial Building: ACP Facade Scaffolding & Installation">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">ACP Cladding</span>
+              <h4 class="p-title">Facade Sub-Framing</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (4).jpeg" alt="Plaza Cladding" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (4).jpeg"
+                data-caption="Commercial Plaza Elevation with 4mm PVDF ACP Cladding">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">ACP Cladding</span>
+              <h4 class="p-title">Commercial Plaza</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (5).jpeg" alt="Save Ten Pharmacy" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (5).jpeg"
+                data-caption="Save Ten Pharmacy: Crisp 6500K White Illuminated 3D Letters">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Healthcare Sign</span>
+              <h4 class="p-title">Save Ten Pharmacy</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="laser">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (6).jpeg" alt="Laser Cut Metal Jali" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (6).jpeg"
+                data-caption="Fiber Laser Cut Steel Architectural Decorative Jali Screen">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Laser Cutting</span>
+              <h4 class="p-title">Architectural Metal Jali</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (7).jpeg" alt="TCL Channel Letters" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (7).jpeg"
+                data-caption="TCL Brand: High-Gloss Cast Acrylic 3D Letters">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Retail Signage</span>
+              <h4 class="p-title">TCL Channel Letters</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (8).jpeg" alt="Stainless Steel Standoff" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (8).jpeg"
+                data-caption="Brushed Stainless Steel 3D Standoff Logo">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Interior Sign</span>
+              <h4 class="p-title">Stainless Steel Standoff</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (9).jpeg" alt="Freestanding Pylon" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (9).jpeg"
+                data-caption="Freestanding Pylon Totem Sign for Commercial Center">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Totem Sign</span>
+              <h4 class="p-title">Commercial Pylon</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (11).jpeg" alt="Star World Rigging" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (11).jpeg"
+                data-caption="Star World: On-Site Rigging & Mounting 3D Sign Letters on Scaffolding">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">On-Site Rigging</span>
+              <h4 class="p-title">Star World Mounting</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="laser">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (12).jpeg" alt="Fiber Laser Bed" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (12).jpeg"
+                data-caption="Industrial Fiber Laser Bed in Operation">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Machinery</span>
+              <h4 class="p-title">Fiber Laser Bed</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (13).jpeg" alt="LED Matrix Module" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (13).jpeg"
+                data-caption="Samsung IP67 Waterproof LED Matrix Modules Fitted Inside Letters">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Quality Control</span>
+              <h4 class="p-title">IP67 Waterproof LEDs</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (14).jpeg" alt="Gomal University Entrance" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (14).jpeg"
+                data-caption="Gomal University D.I. Khan: Full Entrance Archway Monument">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Entrance Monument</span>
+              <h4 class="p-title">Gomal University Arch</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (15).jpeg" alt="Curved Pillar Cladding" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (15).jpeg"
+                data-caption="Curved Column Wrapping with Silver Metallic ACP Panels">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Complex Cladding</span>
+              <h4 class="p-title">Curved Pillar Wrap</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (16).jpeg" alt="Interior Logo Wall" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (16).jpeg"
+                data-caption="Executive Reception 3D Logo on Acoustic Wall Panels">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Interior Sign</span>
+              <h4 class="p-title">Reception 3D Logo</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="cladding">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (17).jpeg" alt="Asian Mall Night Elevation" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (17).jpeg"
+                data-caption="Asian Mall: Multi-Tier Rooftop 3D Illuminated Sign & Facade">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Mall Facade</span>
+              <h4 class="p-title">Asian Mall Elevation</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (18).jpeg" alt="Barcelona Lounge Sign" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (18).jpeg"
+                data-caption="Barcelona Snooker Club & Lounge: Dual-Tone Illuminated Sign">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Lounge Sign</span>
+              <h4 class="p-title">Barcelona Lounge</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="laser">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (19).jpeg" alt="Geometric Metal Screen" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (19).jpeg"
+                data-caption="Laser-Cut Geometric Metal Privacy Screen for Room Division">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Laser Jali</span>
+              <h4 class="p-title">Interior Partition</h4>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="signage">
+            <div class="project-thumb">
+              <img src="assets/more_projects/dlw_image (20).jpeg" alt="Adam Jee Sign" loading="lazy">
+              <div class="project-overlay media-trigger" data-type="image"
+                data-src="assets/more_projects/dlw_image (20).jpeg"
+                data-caption="Adam Jee: Crimson 3D Channel Letters with Flowing LED Detail">
+                <i class="fa-solid fa-expand"></i>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="p-category">Retail Sign</span>
+              <h4 class="p-title">Adam Jee Sign</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 7. OUR 4-STEP PROCESS -->
+    <!-- ========================================================================= -->
+    <section id="process" class="section-padding bg-obsidian">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-list-check text-accent-gold mr-2"></i> STEP-BY-STEP</span>
+        </div>
+        <h2 class="section-title text-center">How We Deliver Your Project</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          We handle every detail from the initial site measurement to final electrical hookup.
+        </p>
+
+        <div class="process-clean-grid mt-12">
+          <div class="proc-step">
+            <div class="proc-number">1</div>
+            <h4 class="proc-heading">Site Measurement</h4>
+            <p class="proc-text">We inspect the building, take exact laser measurements, and check electrical connection
+              points.</p>
+          </div>
+          <div class="proc-step">
+            <div class="proc-number">2</div>
+            <h4 class="proc-heading">3D Design & Approval</h4>
+            <p class="proc-text">You receive a clear 3D preview of the signboard or cladding on your building before
+              work begins.</p>
+          </div>
+          <div class="proc-step">
+            <div class="proc-number">3</div>
+            <h4 class="proc-heading">Workshop Fabrication</h4>
+            <p class="proc-text">We cut, bend, and assemble using CNC lasers, genuine cast acrylic, and waterproof LED
+              modules.</p>
+          </div>
+          <div class="proc-step">
+            <div class="proc-number">4</div>
+            <h4 class="proc-heading">Mounting & Testing</h4>
+            <p class="proc-text">Our rigging team installs the framing, mounts the panels/letters, and completes full
+              nighttime lighting tests.</p>
+            <span class="night-test-pill"><i class="fa-solid fa-moon"></i> Night Test Standard</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 8. INSTANT COST ESTIMATOR & RFQ CALCULATOR -->
+    <!-- ========================================================================= -->
+    <section id="calculator" class="section-padding bg-obsidian-elevated">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-calculator text-accent-laser mr-2"></i> ESTIMATOR</span>
+        </div>
+        <h2 class="section-title text-center">Instant Project Cost Estimator</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          Select your project type and dimensions to see estimated square footage and send an instant inquiry to our
+          WhatsApp (+92 313 9355979).
+        </p>
+
+        <div class="calculator-card-wrapper mt-10">
+          <form id="rfq-calculator-form" class="calculator-form">
+            <div class="calc-grid">
+
+              <!-- Left: Inputs -->
+              <div class="calc-options-col">
+                <div class="form-group">
+                  <label class="form-label"><span class="step-num">1</span> Project Type</label>
+                  <div class="calc-radio-group">
+                    <label class="calc-radio-card active">
+                      <input type="radio" name="project_type" value="3D Channel Sign Board" checked>
+                      <i class="fa-solid fa-lightbulb"></i>
+                      <span>3D Sign Board</span>
+                    </label>
+                    <label class="calc-radio-card">
+                      <input type="radio" name="project_type" value="Architectural ACP Facade Cladding">
+                      <i class="fa-solid fa-layer-group"></i>
+                      <span>ACP Cladding</span>
+                    </label>
+                    <label class="calc-radio-card">
+                      <input type="radio" name="project_type" value="CNC Fiber Laser Metal Cutting">
+                      <i class="fa-solid fa-bolt"></i>
+                      <span>Laser Cutting</span>
+                    </label>
+                    <label class="calc-radio-card">
+                      <input type="radio" name="project_type" value="Monument Pylon or Campus Entrance">
+                      <i class="fa-solid fa-monument"></i>
+                      <span>Pylon / Archway</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group mt-6">
+                  <label class="form-label"><span class="step-num">2</span> Dimensions in Feet</label>
+                  <div class="dimension-inputs-row">
+                    <div class="input-wrap">
+                      <span class="input-prefix">Length:</span>
+                      <input type="number" id="dim-length" class="form-input" value="20" min="2" max="200" required>
+                      <span class="input-suffix">Ft</span>
+                    </div>
+                    <div class="input-wrap">
+                      <span class="input-prefix">Height:</span>
+                      <input type="number" id="dim-height" class="form-input" value="4" min="1" max="100" required>
+                      <span class="input-suffix">Ft</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group mt-6">
+                  <label class="form-label"><span class="step-num">3</span> Material & Finish</label>
+                  <select id="material-select" class="form-select">
+                    <option value="Front-Lit Cast Acrylic with Waterproof LEDs">Front-Lit Cast Acrylic with Waterproof
+                      LEDs</option>
+                    <option value="Halo Backlit Stainless Steel (Golden / Chrome Finish)">Halo Backlit Stainless Steel
+                      (Golden / Chrome)</option>
+                    <option value="4mm PVDF Aluminum Composite Panel (Exterior Cladding)">4mm PVDF Aluminum Composite
+                      Panel (ACP Cladding)</option>
+                    <option value="Precision Laser-Cut Metal Jali Screen (Mild / Stainless Steel)">Precision Laser-Cut
+                      Metal Jali Screen</option>
+                  </select>
+                </div>
+
+                <div class="form-group mt-6">
+                  <label class="form-label"><span class="step-num">4</span> Installation Floor</label>
+                  <div class="elevation-select-row">
+                    <label class="radio-pill active"><input type="radio" name="elevation" value="Ground Floor" checked>
+                      Ground Floor</label>
+                    <label class="radio-pill"><input type="radio" name="elevation" value="2nd to 4th Floor"> 2nd - 4th
+                      Floor</label>
+                    <label class="radio-pill"><input type="radio" name="elevation" value="Rooftop"> Rooftop</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Live Summary -->
+              <div class="calc-summary-col">
+                <div class="summary-card">
+                  <div class="summary-header">
+                    <span class="summary-badge"><i class="fa-solid fa-calculator text-accent-laser mr-1"></i> ESTIMATE
+                      SUMMARY</span>
+                    <h4 class="text-xl font-bold font-serif mt-2">Project Dimensions</h4>
+                  </div>
+
+                  <div class="summary-metrics">
+                    <div class="sum-row">
+                      <span>Total Area:</span>
+                      <strong id="sum-area" class="text-accent-gold text-xl">80 Sq.Ft</strong>
+                    </div>
+                    <div class="sum-row">
+                      <span>Selected Work:</span>
+                      <strong id="sum-type">3D Channel Sign Board</strong>
+                    </div>
+                    <div class="sum-row">
+                      <span>Material:</span>
+                      <strong id="sum-material" class="text-xs text-right max-w-xs">Cast Acrylic + LEDs</strong>
+                    </div>
+                    <div class="sum-row">
+                      <span>Standard Timeframe:</span>
+                      <strong class="text-accent-laser">5 - 8 Business Days</strong>
+                    </div>
+                  </div>
+
+                  <hr class="summary-divider">
+
+                  <div class="client-details-block">
+                    <label class="form-label text-xs">Your Name & City</label>
+                    <input type="text" id="client-name" class="form-input text-sm mb-2"
+                      placeholder="Your Name or Shop Name" required>
+                    <input type="text" id="client-city" class="form-input text-sm"
+                      placeholder="City (e.g. D.I. Khan, Bhakkar)" required>
+                  </div>
+
+                  <div class="summary-actions mt-4">
+                    <button type="button" id="btn-whatsapp-rfq" class="btn-whatsapp-full">
+                      <i class="fa-brands fa-whatsapp text-xl"></i>
+                      <span>Send Specs to WhatsApp (+92 313 9355979)</span>
+                    </button>
+                    <p class="text-xs text-center text-muted mt-2">
+                      <i class="fa-solid fa-bolt text-accent-gold"></i> Instant response on +92 313 9355979.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 9. REVIEWS (CLIENT NAMES REMOVED, JUST BRAND NAMES) -->
+    <!-- ========================================================================= -->
+    <section id="testimonials" class="section-padding bg-obsidian">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-comments text-accent-gold mr-2"></i> CLIENT FEEDBACK</span>
+        </div>
+        <h2 class="section-title text-center">What Our Clients Say</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          Honest feedback from businesses who trusted Dera Laser Works for signage and facade cladding.
+        </p>
+
+        <div class="testimonials-grid mt-12">
+          <!-- Review 1: Islamabad Health Clinic -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "Dera Laser Works completed our clinic signboard on time. The 3D lettering is sharp, the illumination is
+              uniform, and their mounting team was very careful during installation."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar"><i class="fa-solid fa-hospital"></i></div>
+              <div>
+                <strong class="reviewer-name">Islamabad Health Clinic</strong>
+                <span class="reviewer-role">Healthcare Facility</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2: Centro Retail Store -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "We renovated our store facade with their ACP cladding and 3D front-lit sign. Our shop looks ten times
+              more modern and customers notice it immediately."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar"><i class="fa-solid fa-store"></i></div>
+              <div>
+                <strong class="reviewer-name">Centro Retail Store</strong>
+                <span class="reviewer-role">Commercial Storefront</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: One Pizza & Grill -->
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "The restaurant sign looks amazing at night. Bright colors, clean finishing, and zero issues with rain or
+              weather over the past year."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar"><i class="fa-solid fa-utensils"></i></div>
+              <div>
+                <strong class="reviewer-name">One Pizza & Grill</strong>
+                <span class="reviewer-role">Restaurant & Fast Food</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 10. CONTACT SECTION WITH UPDATED WHATSAPP (+923139355979) -->
+    <!-- ========================================================================= -->
+    <section id="contact" class="section-padding bg-obsidian-elevated">
+      <div class="container">
+        <div class="section-badge text-center">
+          <span class="pill-badge"><i class="fa-solid fa-phone text-accent-laser mr-2"></i> CONTACT US</span>
+        </div>
+        <h2 class="section-title text-center">Visit Us or Call for a Quote</h2>
+        <p class="section-subtitle text-center max-w-2xl mx-auto">
+          Need a site visit or exact quote for your building? Reach out to our workshop team.
+        </p>
+
+        <div class="contact-grid mt-12">
+          <!-- Info -->
+          <div class="contact-info-card">
+            <h3 class="text-2xl font-bold font-serif">Dera Laser Works Workshop</h3>
+            <p class="text-muted text-sm mt-3">
+              We welcome you to visit our workshop in Dera Ismail Khan to see material samples, inspect acrylic and
+              metal finishes, and discuss your design in person.
+            </p>
+
+            <div class="contact-details-list mt-8">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <strong>Workshop Address:</strong>
+                  <span>Main Indus Highway / Commercial Area, Dera Ismail Khan, KPK, Pakistan</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <strong>Direct Phone:</strong>
+                  <span><a href="tel:+923139355979" class="hover:text-accent-laser">+92 (313) 935-5979</a></span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fa-brands fa-whatsapp text-green-400"></i></div>
+                <div>
+                  <strong>WhatsApp (Quick Reply):</strong>
+                  <span><a href="https://wa.me/923139355979" target="_blank" class="hover:text-accent-gold">+92 313
+                      9355979</a></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="emergency-badge mt-8">
+              <i class="fa-solid fa-screwdriver-wrench text-accent-laser text-2xl mr-3"></i>
+              <div>
+                <strong>Sign Repair & Maintenance</strong>
+                <p class="text-xs text-muted">We also service existing signboards, replace burnt LED drivers, and repair
+                  damaged panels.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Message Form -->
+          <div class="contact-form-card">
+            <h3 class="text-xl font-bold font-serif mb-4">Send an Inquiry</h3>
+            <form id="contact-form" class="direct-contact-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label class="field-label">Your Name *</label>
+                  <input type="text" class="field-input" placeholder="e.g. Muhammad Ahmad" required>
+                </div>
+                <div class="form-field">
+                  <label class="field-label">Business / Shop Name</label>
+                  <input type="text" class="field-input" placeholder="e.g. Al-Madina Mart">
+                </div>
+              </div>
+
+              <div class="form-row mt-4">
+                <div class="form-field">
+                  <label class="field-label">Phone / WhatsApp *</label>
+                  <input type="tel" class="field-input" placeholder="+92 313 9355979" required>
+                </div>
+                <div class="form-field">
+                  <label class="field-label">City *</label>
+                  <input type="text" class="field-input" placeholder="e.g. D.I. Khan" required>
+                </div>
+              </div>
+
+              <div class="form-field mt-4">
+                <label class="field-label">Service Needed</label>
+                <select class="field-select">
+                  <option>3D Sign Board</option>
+                  <option>ACP Cladding Works</option>
+                  <option>Laser / CNC Metal Cutting</option>
+                  <option>Signboard Repair & Maintenance</option>
+                </select>
+              </div>
+
+              <div class="form-field mt-4">
+                <label class="field-label">Details or Approximate Size</label>
+                <textarea class="field-textarea" rows="4"
+                  placeholder="Tell us about the size, text, or location of your signboard..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary-glow w-full mt-6">
+                <span>Send Inquiry</span>
+                <i class="fa-solid fa-paper-plane ml-2"></i>
+              </button>
+              <div id="form-toast" class="form-toast hidden">
+                <i class="fa-solid fa-circle-check text-green-400 mr-2"></i> Thank you! Your inquiry has been received.
+                We will contact you shortly.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 11. FOOTER -->
+  <!-- ========================================================================= -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-mark footer-logo">
+          <i class="fa-solid fa-shapes text-accent-laser"></i>
+          <span class="logo-dlw-badge ml-2">DLW</span>
+        </div>
+        <p class="footer-desc mt-3">
+          Specializing in 3D illuminated channel signboards, architectural ACP cladding, and precision laser cutting
+          across Pakistan.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">3D Channel Letters</a></li>
+          <li><a href="#services">ACP Facade Cladding</a></li>
+          <li><a href="#services">Laser Cut Jali Screens</a></li>
+          <li><a href="#services">Pylon & Entrance Signs</a></li>
+          <li><a href="#contact">Signboard Repairs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Projects</h4>
+        <ul class="footer-links">
+          <li><a href="#featured-projects">Centro Store</a></li>
+          <li><a href="#featured-projects">Islamabad Health Clinic</a></li>
+          <li><a href="#featured-projects">Emergency Hospital</a></li>
+          <li><a href="#featured-projects">One Pizza & Grill</a></li>
+          <li><a href="#featured-projects">Gomal University</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Quick Contact</h4>
+        <a href="tel:+923139355979" class="footer-phone-btn mt-2">
+          <i class="fa-solid fa-phone"></i> +92 313 9355979
+        </a>
+        <a href="https://wa.me/923139355979" class="footer-quote-btn mt-2">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp: +92 313 9355979
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>© 2026 Dera Laser Works. All Rights Reserved.</p>
+        <p class="text-xs text-muted">Dera Ismail Khan, KPK, Pakistan | WhatsApp: +92 313 9355979</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 12. FULLSCREEN LIGHTBOX MODAL -->
+  <!-- ========================================================================= -->
+  <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content-wrapper">
+      <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close Lightbox"><i
+          class="fa-solid fa-xmark"></i></button>
+      <div class="lightbox-media-container" id="lightbox-media-box"></div>
+      <div class="lightbox-caption-bar" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Floating Pulse Button (Direct to +923139355979) -->
+  <a href="https://wa.me/923139355979?text=Hello%20Dera%20Laser%20Works,%20I%20would%20like%20to%20get%20a%20quote%20for%20signage%20or%20cladding."
+    target="_blank" rel="noopener" class="floating-whatsapp-btn" title="Chat on WhatsApp (+92 313 9355979)">
+    <span class="ping-circle"></span>
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Script -->
+  <script src="app.js"></script>
+</body>
+
+</html>
